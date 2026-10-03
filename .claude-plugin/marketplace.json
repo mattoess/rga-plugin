@@ -1,0 +1,19 @@
+{
+  "name": "rga",
+  "owner": {
+    "name": "Revenue Growth Agent",
+    "email": "support@revenuegrowthagent.com"
+  },
+  "metadata": {
+    "description": "Revenue Growth Agent plugins for Claude."
+  },
+  "plugins": [
+    {
+      "name": "rga",
+      "source": "./",
+      "description": "Meeting prep, MEDDIC discovery analysis, deal checks, proposals and SOWs from Revenue Growth Agent.",
+      "category": "productivity",
+      "homepage": "https://www.revenuegrowthagent.com/mcp-connector"
+    }
+  ]
+}
