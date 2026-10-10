@@ -19,6 +19,17 @@ You need an RGA account. Sign up at [revenuegrowthagent.com](https://www.revenue
 
 `daily-briefing` and `call-autopilot` also use your own calendar, email, notetaker and CRM connectors in Claude. RGA never writes to your CRM itself: `crm-sync` has Claude do it through your CRM connector (HubSpot, Salesforce, Microsoft Dynamics 365, Pipedrive, GoHighLevel and others), finding records before creating them, adding one consistent note with the RGA link, and asking before it writes.
 
+## What this plugin sends, and where
+
+Everything RGA does runs through the RGA connector this plugin includes, under your own RGA login and the organization you choose when connecting.
+
+- **To Revenue Growth Agent (revenuegrowthagent.com), through the connector:** prospect names, companies and contact details you ask to prep; call transcripts you ask to analyze; and proposal or SOW instructions. Results come back the same way.
+- **Transcript files:** when a transcript is in a file, the `discovery-analysis` and `call-autopilot` skills have Claude upload it directly to `www.revenuegrowthagent.com` with a one-time upload link (a `curl` command in Claude's code sandbox), so long transcripts aren't retyped into the chat. Nothing is uploaded anywhere else.
+- **Your CRM:** only when you ask, or in a scheduled task you set up, the `crm-sync`, `daily-briefing` and `call-autopilot` skills have Claude write contacts and notes to your CRM through **your own** CRM connector in Claude. RGA itself never connects to your CRM. Notes hold summaries and RGA links, never transcripts.
+- **Your calendar, email and notetaker:** read through your own connectors only to prepare a request (who you're meeting, the call transcript). Only what the request needs is sent to RGA.
+
+The plugin itself stores nothing and runs no code of its own; it contains only skill instructions and the connector address. See the [privacy policy](https://www.revenuegrowthagent.com/privacy) and [terms](https://www.revenuegrowthagent.com/terms).
+
 ## Install
 
 **Claude (web, desktop, mobile) and Cowork**
