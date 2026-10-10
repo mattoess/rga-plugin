@@ -10,7 +10,7 @@ Confirms the RGA connector is connected and acting under the right workspace, th
 ## Steps
 
 1. **Check the tools are there.** If no `rga_*` tools are available, the connector isn't connected or isn't enabled in this conversation. Tell the user:
-   - In Claude, open Customize > Connectors, find RGA, and connect. If it isn't listed, add a custom connector with the URL `https://rga-mcp-production.up.railway.app/mcp` and leave the client ID and secret empty.
+   - In Claude, open Customize > Connectors, find RGA, and connect. If it isn't listed, add a custom connector with the URL `https://mcp.revenuegrowthagent.com/mcp` and leave the client ID and secret empty.
    - Sign in with their RGA account and pick their organization on the consent screen.
    - Make sure the connector is switched on for this chat (the tools menu).
    - Full steps: https://www.revenuegrowthagent.com/mcp-connector
