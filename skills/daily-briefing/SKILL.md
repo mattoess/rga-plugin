@@ -35,7 +35,7 @@ If a required one is missing, say which and stop. If a recommended one is missin
    - **Run interactively:** show all the confirm tables in one message and wait for one OK, as in the `meeting-prep` skill.
    - **Run as a scheduled task with nobody watching:** only run preps where `readyToRun` is true and enrichment agrees with the calendar and email (same company, a plausible title). Set `userConfirmed=true` only on those, since the seller pre-approved this exact rule when they set up the task. Everything else goes on the "couldn't confirm" list with what's missing. Never guess a missing industry or company size.
 6. **Run and wait.** `rga_run_meeting_prep` for each, then poll `rga_get_job_status` with `kind='prep'` at `retryAfterMs`.
-7. **Save.** For each completed prep, add or update the contact in the CRM and attach the prep link (`htmlUrl` from `rga_get_prep`), or add it to the calendar event if there's no CRM.
+7. **Save.** For each completed prep, add or update the contact in the CRM and add the prep note, following the `crm-sync` skill (its "Unattended runs" rules when scheduled). With no CRM, add the prep link (`htmlUrl` from `rga_get_prep`) to the calendar event.
 8. **Report.** One short message.
 
 ## Output

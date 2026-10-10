@@ -33,14 +33,7 @@ Ask once whether the user wants **review mode**: show the CRM notes and wait for
    - `DUPLICATE_TRANSCRIPT`: already processed. Skip it and count it as "already processed". Never pass `allowDuplicate` unattended.
    - `ATTENDEE_DOMAIN_MISMATCH`: the attendees don't match the deal. Skip it and list it under "needs you". Never pass `allowDomainMismatch` unattended.
 6. **Read it.** Call `rga_get_opportunity` for the scores, gaps and next questions.
-7. **Log it.** Add a note to the CRM deal (or the contact if there's no deal) with:
-   - call title and date
-   - a 2 to 3 line summary
-   - MEDDIC scores
-   - top gaps
-   - next questions
-   - the RGA opportunity link
-   In review mode, show all the notes first and wait for an OK.
+7. **Log it.** Add the discovery note to the CRM deal (or the person if there's no deal), using the `crm-sync` skill's MEDDIC template, with the call title and date in the first line. Follow its "Unattended runs" rules when scheduled: it also checks for an existing note with the same RGA link, so a re-run never adds a second one. In review mode, show all the notes first and wait for an OK.
 8. **Report.**
 
 ## Output

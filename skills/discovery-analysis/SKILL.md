@@ -58,6 +58,8 @@ Lead with what the seller acts on, not the full readout:
 
 Then offer: "Want the full MEDDIC breakdown?" If yes, show `rga_get_opportunity`'s markdown as returned.
 
+If a CRM connector is available, also offer to log it on the deal ("Want me to add this to the {Company} opportunity in {CRM}?"). If yes, follow the `crm-sync` skill.
+
 ## Guardrails
 
 - Never chain to an existing opportunity on your own inference.
