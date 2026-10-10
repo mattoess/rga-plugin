@@ -32,7 +32,7 @@ jobs:
           exit $fail
       - name: Skills name only tools the connector registers
         run: |
-          known="rga_whoami rga_which_organization rga_prepare_prospect rga_run_meeting_prep rga_get_prep rga_find_opportunities rga_analyze_discovery rga_get_opportunity rga_generate_proposal rga_generate_sow rga_get_document rga_get_job_status"
+          known="rga_whoami rga_which_organization rga_find_preps rga_create_upload_url rga_prepare_prospect rga_run_meeting_prep rga_get_prep rga_find_opportunities rga_analyze_discovery rga_get_opportunity rga_generate_proposal rga_generate_sow rga_get_document rga_get_job_status"
           fail=0
           for t in $(grep -ohE 'rga_[a-z_]+' skills/*/SKILL.md | sort -u); do
             echo " $known " | grep -q " $t " || { echo "::error::skills name unknown tool $t"; fail=1; }

@@ -1,6 +1,6 @@
 {
   "name": "rga",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Revenue Growth Agent for Claude: meeting prep, MEDDIC discovery analysis, deal checks, proposals and SOWs, run the right way from a plain request. Includes the RGA connector.",
   "author": {
     "name": "Revenue Growth Agent",

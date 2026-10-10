@@ -26,10 +26,11 @@ If a required one is missing, say which and stop. If a recommended one is missin
 2. **Keep only first-time meetings.** Drop a person if any of these are true:
    - An earlier meeting with them is on the calendar.
    - The CRM shows prior meetings or an open deal with them.
+   - `rga_find_preps` finds a prep for them (match on their email, or full name plus company).
    - The CRM contact or the calendar event already has an RGA prep link (`/api/meeting-prepper/preview`).
-   RGA has no tool to list existing preps, so the CRM and calendar are how you avoid paying for a prep twice.
+   Checking first is how you avoid paying for a prep twice.
 3. **Gather context.** For each person left, skim recent email threads with them or their company for role, company and what the meeting is about.
-4. **Enrich.** Call `rga_prepare_prospect` for each.
+4. **Enrich.** Call `rga_prepare_prospect` for each. Pass the person's LinkedIn URL if the CRM or the email signature has it: RGA uses it as an exact key.
 5. **Confirm or flag.**
    - **Run interactively:** show all the confirm tables in one message and wait for one OK, as in the `meeting-prep` skill.
    - **Run as a scheduled task with nobody watching:** only run preps where `readyToRun` is true and enrichment agrees with the calendar and email (same company, a plausible title). Set `userConfirmed=true` only on those, since the seller pre-approved this exact rule when they set up the task. Everything else goes on the "couldn't confirm" list with what's missing. Never guess a missing industry or company size.

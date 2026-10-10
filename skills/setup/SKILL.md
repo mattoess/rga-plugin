@@ -24,6 +24,10 @@ Confirms the RGA connector is connected and acting under the right workspace, th
    - "Create a proposal for Acme." (needs a discovery analysis first)
    - A 7am daily briefing and automatic call scoring, as scheduled tasks. Offer to set either up.
 
+## Uploading long transcripts
+
+Long call transcripts go to RGA as a file upload (a `curl` from Claude's code sandbox) so they never have to be retyped. That needs code execution on, and `www.revenuegrowthagent.com` allowed in Claude's network settings (Settings > Capabilities; on Team and Enterprise plans an admin sets this). Without it, transcripts under about 30,000 characters still work as pasted text.
+
 ## Optional: a project for discovery work
 
 Sellers who analyze a lot of calls do better with a Claude project whose instructions list their solutions and active opportunities (company and RGA opportunity id, the part of the RGA link after `/opportunity/`). It lets Claude match a transcript to the right deal instead of asking every time. Offer to draft those instructions from `rga_find_opportunities` results.
