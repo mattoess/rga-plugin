@@ -2,7 +2,7 @@
   "mcpServers": {
     "rga": {
       "type": "http",
-      "url": "https://rga-mcp-production.up.railway.app/mcp"
+      "url": "https://mcp.revenuegrowthagent.com/mcp"
     }
   }
 }
