@@ -34,3 +34,5 @@ Turns a name and a company into a full RGA meeting prep: pains, talking points, 
 
 One prospect: the prep in full, then the link.
 A list: a table of prospect, company, status and link, then "Want me to open any of these?"
+
+If a CRM connector is available, offer once: "Want me to add this to {CRM}?" If yes, follow the `crm-sync` skill.

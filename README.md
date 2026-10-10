@@ -14,9 +14,10 @@ You need an RGA account. Sign up at [revenuegrowthagent.com](https://www.revenue
 | `deal-check` | "Where do we stand with Acme? What are the open gaps?" |
 | `proposal-sow` | "Create a proposal for Acme: $15,000 a month for three months, built around a $1M ROI." |
 | `call-autopilot` | "Score my sales calls from today and log them to the CRM." Runs every 2 hours as a scheduled task. |
+| `crm-sync` | "Add this prep to HubSpot." / "Log the MEDDIC on the Acme opportunity in Salesforce." |
 | `setup` | "Is RGA connected? Which org am I in?" |
 
-`daily-briefing` and `call-autopilot` also use your own calendar, email, notetaker and CRM connectors in Claude. RGA never writes to your CRM itself.
+`daily-briefing` and `call-autopilot` also use your own calendar, email, notetaker and CRM connectors in Claude. RGA never writes to your CRM itself: `crm-sync` has Claude do it through your CRM connector (HubSpot, Salesforce, Microsoft Dynamics 365, Pipedrive, GoHighLevel and others), finding records before creating them, adding one consistent note with the RGA link, and asking before it writes.
 
 ## Install
 

@@ -22,6 +22,8 @@ Builds a client-facing proposal from what the buyer actually said in discovery, 
 5. **Show it.** Call `rga_get_document` with `kind='proposal'` and show the markdown as returned, with the RGA link.
 6. **Hand off.** Tell the seller to review it and, when happy, approve it in RGA. Approval can't be done from here, and the SOW needs it.
 
+If a CRM connector is available, offer to log the proposal on the deal, following the `crm-sync` skill.
+
 The seller can keep refining in conversation. To regenerate, call `rga_generate_proposal` again with updated instructions.
 
 ## SOW
