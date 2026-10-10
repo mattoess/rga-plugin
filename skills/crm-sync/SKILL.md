@@ -38,8 +38,24 @@ Links: use the prep's `htmlUrl` from `rga_get_prep` or `rga_find_preps`, and the
    - the fields you'll set (only blank fields, plus fields the user just confirmed in RGA; never overwrite a non-empty CRM value without asking)
    - the note text exactly as it will appear
    Then wait for OK. Skip this only in a scheduled task the user has approved (see "Unattended runs").
-7. **Write.** Person first, then deal, then notes, then associations (note to person and deal; person to deal if the CRM links them). If a field exists for an RGA link (named like "RGA Prep URL", "RGA Opportunity", "RGA Link"), also set it. Don't go looking for one beyond a quick check of the record's fields.
+7. **Write.** Person first, then deal, then notes, then associations (note to person and deal; person to deal if the CRM links them). Then set RGA fields if the record has them (next section). The note is always written, fields or not: it's the one place every CRM can hold the link, and it keeps a history across preps and meetings.
 8. **Report.** One short list: what was created or updated, each with a link to the CRM record if the connector returns one. List anything you skipped, and why.
+
+## RGA fields (when the CRM has them)
+
+Customers who installed RGA's Salesforce package or HubSpot app already have RGA fields on their people records. Those fields belong to RGA, so set them to the latest values even if they hold an older link (the one exception to "never overwrite").
+
+| CRM | Field (API name) | Set to |
+| --- | --- | --- |
+| HubSpot contact | `rga_prep_doc_url` (RGA Prep Document URL) | prep link |
+| | `rga_last_prep_date` | prep date |
+| | `rga_last_prep_session` | prep id (`prepMeetingId`) |
+| Salesforce Lead / Contact | `RGA_Prep_Doc_URL__c`, usually `rgaapp__RGA_Prep_Doc_URL__c` | prep link |
+| | `RGA_Prep_Session_ID__c` (same prefix) | prep id |
+
+Leave status fields (`rga_sync_status`, `RGA_Prep_Status__c`) to the RGA integration itself.
+
+For any other CRM, use a field only if its name plainly says it holds an RGA link ("RGA Prep URL", "RGA Opportunity Link"). Never write RGA links into general fields like Description, and never create a field. Without one, the note carries the link.
 
 ## Note templates
 

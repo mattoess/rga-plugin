@@ -5,6 +5,7 @@ How each CRM models people, deals and notes, and what to watch for. Connector to
 ## HubSpot
 
 - **Person:** Contact. Email is the unique key; search by `email` first. Properties: `firstname`, `lastname`, `email`, `jobtitle`, `company`, `hs_linkedin_url` (if present in the portal).
+- **RGA app properties:** portals with the RGA HubSpot app have `rga_prep_doc_url`, `rga_last_prep_date` and `rga_last_prep_session` (group "Revenue Growth Agent"). See "RGA fields" in SKILL.md. Write the note as well.
 - **Deal:** Deal, in a pipeline with a `dealstage`. Find open deals associated with the contact, or with the contact's company.
 - **Note:** a Note engagement (`hs_note_body`, `hs_timestamp`), associated to the contact and, for MEDDIC/proposal, the deal. Note bodies accept basic HTML; plain text with line breaks is fine.
 - **Don't create:** companies, pipelines, stages, properties. HubSpot may auto-create a company from the email domain; that's HubSpot's behavior, not something to do yourself.
@@ -17,7 +18,7 @@ How each CRM models people, deals and notes, and what to watch for. Connector to
   - To create, make a **Lead** (`FirstName`, `LastName`, `Company` (required), `Email`, `Title`). Don't create a Contact: it normally needs an Account.
 - **Deal:** Opportunity. Use one only if it already exists (search by the person's Account via the Contact, or by name). **Never create an Opportunity or an Account.**
 - **Note:** a completed Task is the most reliably writable activity: `Subject` (first line of the template), `Description` (the rest), `Status` = Completed, `ActivityDate` = today, `WhoId` = the Lead/Contact, `WhatId` = the Opportunity when there is one. Use an Enhanced Note (ContentNote) instead only if the connector supports it and the user prefers notes.
-- **RGA link fields:** orgs with the RGA package may have RGA fields on Lead/Contact. Set one only if it plainly holds an RGA link; otherwise the Task is enough.
+- **RGA package fields:** orgs with the RGA package have `rgaapp__RGA_Prep_Doc_URL__c` and `rgaapp__RGA_Prep_Session_ID__c` on Lead and Contact (no namespace prefix in unpackaged orgs). See "RGA fields" in SKILL.md. Write the Task as well.
 - **Leads converted later** keep their Tasks, which follow the Lead to the Contact.
 
 ## Microsoft Dynamics 365 (Sales)
