@@ -30,7 +30,7 @@ The one mistake that can't be undone is adding a transcript to the wrong deal. E
    - If the people or company in the transcript don't match the opportunity the user picked, stop and say so. Don't reconcile it yourself.
 6. **Get the discovery goal.** `discoveryGoal` is required. Ask the seller in one line what they wanted to learn or achieve on the call, unless they already said.
 7. **Upload and start.**
-   - **Transcript in a file, and you can run shell commands:** call `rga_create_upload_url`, then run its `curlExample` with the real file path in place of `transcript.txt`. Keep `--data-binary` (`-d` strips the newlines). It should print `"status": "complete"`. Then call `rga_analyze_discovery` with `uploadId`.
+   - **Transcript in a file, and you can run shell commands:** call `rga_create_upload_url`, then run its `curlExample` with the real file path in place of `transcript.txt`. Keep `--data-binary` (`-d` strips the newlines). It should print `"status": "complete"` and the `bytes` received. Then call `rga_analyze_discovery` with `uploadId` and `uploadBytes` set to the file's size (`wc -c < file`). The upload URL works once and expires after 15 minutes, so upload right after asking for it.
    - **Pasted text, or no shell:** use `transcriptText`, but only if it's under about 30,000 characters. For anything longer, stop and tell the user: either allow `www.revenuegrowthagent.com` in Claude's network settings (Settings > Capabilities) so the file can be uploaded, or upload the transcript in the RGA app.
    - Either way, pass: companyName, discoveryGoal, `prepMeetingId` (if found), `meeting` (source, sourceMeetingId, title, occurredAt, attendeeEmails), `speakerMap` (if confirmed), prospect details, and the mode: `mode='existing'` with `rootSessionId` for an existing deal, `mode='new'` otherwise.
 8. **Handle what comes back.**
@@ -38,6 +38,7 @@ The one mistake that can't be undone is adding a transcript to the wrong deal. E
    - `DUPLICATE_TRANSCRIPT`: this call was already analyzed. Tell the user which meeting it matches (company and date from the error details). Only pass `allowDuplicate=true` if they explicitly ask to re-run it.
    - `ATTENDEE_DOMAIN_MISMATCH`: the call's attendees don't look like this deal's company. Show the domains and ask the user. Only pass `allowDomainMismatch=true` if they confirm.
    - `UPLOAD_EXPIRED` or `UPLOAD_ALREADY_USED`: get a new upload URL and upload again.
+   - `UPLOAD_MISMATCH`: the file RGA received isn't the one you sent (the URL may have been used by someone else). Don't analyze it: get a new URL, upload again, and tell the user.
    - `warnings`: pass them on to the user.
 9. **Set expectations.** Tell the user how long it will take using `estimatedSeconds` (usually a few minutes; a follow-up re-analyzes the whole deal, so longer). Share the `rgaUrl`, which works straight away and is safe to save to a CRM.
 10. **Wait.** Poll `rga_get_job_status` with `kind='discovery'` at `retryAfterMs`.

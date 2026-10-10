@@ -25,7 +25,7 @@ Turns a name and a company into a full RGA meeting prep: pains, talking points, 
 ## Guardrails
 
 - Never fill a missing field by web searching, inferring or guessing without showing the user. If enrichment left industry or company size empty, ask. A wrong industry quietly degrades the research and nothing flags it.
-- Industry and company size only accept the values in the tool's schema. If none fits, say so and ask; don't approximate.
+- Industry and company size only accept the values in the tool's schema. Pick the industry by what its label means, not by which slug sounds right: a sign or print shop is `packaging-printing`, while `marketing` means marketing agencies and marketing software. If none fits, say so and ask; don't approximate.
 - Don't summarize or critique the finished prep. The user asked for the prep.
 - If a job comes back `failed`, say which prospect failed and why (from the job's `error`), and offer to retry that one. Don't silently retry.
 - On an error, read `error.code`. `MCP_ORGID_MISSING` means the connection has no RGA workspace: suggest the `setup` skill.
